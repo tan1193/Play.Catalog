@@ -29,6 +29,8 @@ namespace Play.Catalog.Service.Controllers
             return item.AsDto();
         }
 
+        
+
         [HttpPost]
         public async Task<ActionResult<ItemDto>> PostAsync(CreateItemDto createItemDto)
         {
