@@ -9,7 +9,7 @@ namespace Play.Catalog.Service.Controllers
     [Route("items")]
     public class ItemsController : ControllerBase
     {
-        private readonly ItemRepository repository;
+        private readonly ItemRepository repository = new();
 
         [HttpGet]
         public async Task<IEnumerable<ItemDto>> GetAsync()
@@ -29,8 +29,6 @@ namespace Play.Catalog.Service.Controllers
             return item.AsDto();
         }
 
-        
-
         [HttpPost]
         public async Task<ActionResult<ItemDto>> PostAsync(CreateItemDto createItemDto)
         {
@@ -43,7 +41,7 @@ namespace Play.Catalog.Service.Controllers
             };
             await repository.CreateAsync(item);
 
-            return CreatedAtAction(nameof(GetByIdAsync), new { id = item.Id }, item.AsDto());
+            return CreatedAtAction(nameof(GetByIdAsync), new { id = item.Id }, item);
         }
 
         [HttpPut("{id}")]
