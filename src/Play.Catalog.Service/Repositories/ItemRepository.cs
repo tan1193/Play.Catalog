@@ -3,7 +3,6 @@ using Play.Catalog.Service.Entities;
 
 namespace Play.Catalog.Service.Repositories
 {
-
     public class ItemRepository : IItemRepository
     {
         private const string collectionName = "items";
